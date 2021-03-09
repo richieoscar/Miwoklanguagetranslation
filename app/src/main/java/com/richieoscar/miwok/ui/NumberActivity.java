@@ -39,5 +39,6 @@ public class NumberActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
 
+
     }
 }

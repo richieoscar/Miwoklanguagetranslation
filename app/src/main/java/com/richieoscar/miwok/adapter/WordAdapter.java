@@ -1,8 +1,10 @@
 package com.richieoscar.miwok.adapter;
 
+import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,17 +22,18 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.NumberViewHold
     ArrayList<Word> words;
     int colorRes;
 
+
     public WordAdapter(ArrayList<Word> words, int colorRes) {
         this.words = words;
         this.colorRes = colorRes;
     }
+
 
     @NonNull
     @Override
     public NumberViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.list_item, parent, false);
-
         return new NumberViewHolder(view);
     }
 
@@ -39,6 +42,7 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.NumberViewHold
         holder.bind(words.get(position));
         holder.constraintLayout.setBackgroundColor(colorRes);
 
+
     }
 
     @Override
@@ -46,23 +50,44 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.NumberViewHold
         return words.size();
     }
 
-    public class NumberViewHolder extends RecyclerView.ViewHolder {
-      private   TextView englishWord, miwokTranslation;
-       private ImageView image;
-       ConstraintLayout constraintLayout;
+    public class NumberViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private TextView englishWord, miwokTranslation;
+        private ImageView image;
+        ImageButton play;
+        ConstraintLayout constraintLayout;
+
         public NumberViewHolder(@NonNull View itemView) {
             super(itemView);
             englishWord = itemView.findViewById(R.id.textView_english_list);
             miwokTranslation = itemView.findViewById(R.id.textView_miwok_list);
             image = itemView.findViewById(R.id.image_list);
             constraintLayout = itemView.findViewById(R.id.rootLayout);
+            play = itemView.findViewById(R.id.imageButton);
+            itemView.setOnClickListener(this);
+
         }
 
-        void bind(Word word){
-            englishWord.setText(word.getEnglishWord());
-            miwokTranslation.setText(word.getMowikTranslation());
-            image.setImageResource(word.getImage());
+        void bind(Word word) {
+            if (word.hasImage()) {
+                englishWord.setText(word.getEnglishWord());
+                miwokTranslation.setText(word.getMowikTranslation());
+                image.setImageResource(word.getImage());
 
+            } else {
+                englishWord.setText(word.getEnglishWord());
+                miwokTranslation.setText(word.getMowikTranslation());
+                image.setVisibility(View.GONE);
+            }
+
+        }
+
+
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+            Word word = words.get(position);
+            MediaPlayer mediaPlayer = MediaPlayer.create(v.getContext(), word.getAudio());
+            mediaPlayer.start();
         }
     }
 }

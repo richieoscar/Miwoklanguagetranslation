@@ -1,10 +1,14 @@
 package com.richieoscar.miwok.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.richieoscar.miwok.R;
 
@@ -56,5 +60,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id = item.getItemId();
+        switch (id){
+            case R.id.item_about:
+                Toast.makeText(this, "About Miwok", Toast.LENGTH_SHORT).show();
+                break;
+
+            default:
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

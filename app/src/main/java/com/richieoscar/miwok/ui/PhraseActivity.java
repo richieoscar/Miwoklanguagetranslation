@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.richieoscar.miwok.R;
 import com.richieoscar.miwok.adapter.WordAdapter;
@@ -23,6 +24,8 @@ public class PhraseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phrase);
 
+
+
         setUpRecyclerView(Datamanager.getPhrases());
     }
 
@@ -35,6 +38,7 @@ public class PhraseActivity extends AppCompatActivity {
         int color = ContextCompat.getColor(this, R.color.phrase_color);
         WordAdapter adapter = new WordAdapter(words, color);
         recyclerView.setAdapter(adapter);
+
 
 
     }
