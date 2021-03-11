@@ -60,8 +60,8 @@
                 android:id="@+id/imageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/ic_play2"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/ic_baseline_volume_up_24"
 
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

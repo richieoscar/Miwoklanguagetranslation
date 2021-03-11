@@ -19,13 +19,12 @@ import java.util.ArrayList;
 
 public class PhraseActivity extends AppCompatActivity {
 
+    private WordAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phrase);
-
-
-
         setUpRecyclerView(Datamanager.getPhrases());
     }
 
@@ -36,10 +35,13 @@ public class PhraseActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(decoration);
         recyclerView.setLayoutManager(linearLayoutManager);
         int color = ContextCompat.getColor(this, R.color.phrase_color);
-        WordAdapter adapter = new WordAdapter(words, color);
+        adapter = new WordAdapter(words, color);
         recyclerView.setAdapter(adapter);
+    }
 
-
-
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.releaseMediaPlayer();
     }
 }

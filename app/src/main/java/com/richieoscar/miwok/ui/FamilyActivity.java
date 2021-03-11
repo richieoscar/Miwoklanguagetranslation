@@ -17,6 +17,8 @@ import java.util.ArrayList;
 
 public class FamilyActivity extends AppCompatActivity {
 
+    private WordAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,9 +34,13 @@ public class FamilyActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(decoration);
         recyclerView.setLayoutManager(linearLayoutManager);
         int color = ContextCompat.getColor(this, R.color.family_color);
-        WordAdapter adapter = new WordAdapter(words, color);
+        adapter = new WordAdapter(words, color);
         recyclerView.setAdapter(adapter);
+    }
 
-
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.releaseMediaPlayer();
     }
 }

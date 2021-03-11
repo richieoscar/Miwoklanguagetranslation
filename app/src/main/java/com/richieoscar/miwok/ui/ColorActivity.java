@@ -17,11 +17,12 @@ import java.util.ArrayList;
 
 public class ColorActivity extends AppCompatActivity {
 
+    private WordAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color);
-
         setUpRecyclerView(Datamanager.getColors());
     }
 
@@ -32,9 +33,14 @@ public class ColorActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(decoration);
         recyclerView.setLayoutManager(linearLayoutManager);
         int color = ContextCompat.getColor(this, R.color.color_color);
-        WordAdapter adapter = new WordAdapter(words, color);
+        adapter = new WordAdapter(words, color);
         recyclerView.setAdapter(adapter);
 
+    }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.releaseMediaPlayer();
     }
 }

@@ -17,11 +17,13 @@ import java.util.ArrayList;
 
 public class NumberActivity extends AppCompatActivity {
 
+    private WordAdapter adapter;
+    private RecyclerView recyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number);
-
 
         setUpRecyclerView(Datamanager.getNumbers());
 
@@ -29,16 +31,20 @@ public class NumberActivity extends AppCompatActivity {
 
 
     private void setUpRecyclerView(ArrayList<Word> words) {
-        RecyclerView recyclerView = findViewById(R.id.numberRecyclerView);
+        recyclerView = findViewById(R.id.numberRecyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         DividerItemDecoration decoration = new DividerItemDecoration(this, linearLayoutManager.getOrientation());
         recyclerView.addItemDecoration(decoration);
         recyclerView.setLayoutManager(linearLayoutManager);
         int color = ContextCompat.getColor(this, R.color.number_color);
-        WordAdapter adapter = new WordAdapter(words, color);
+        adapter = new WordAdapter(words, color);
         recyclerView.setAdapter(adapter);
 
+    }
 
-
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.releaseMediaPlayer();
     }
 }
