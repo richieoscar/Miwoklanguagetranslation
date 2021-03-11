@@ -15,8 +15,12 @@
     <color name="primaryTextColor">#ffffff</color>
 
 <!--    color for activities-->
-    <color name="number_color">#F4BB48</color>
-    <color name="family_color">#242561</color>
+
+
     <color name="color_color">#107767</color>
     <color name="phrase_color">#AA2323</color>
+    <color name="number_color">#F4BB48</color>
+    <color name="family_color">#242561</color>
+    <color name="colors_color">#107767</color>
+
 </resources>

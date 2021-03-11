@@ -1,14 +1,14 @@
 package com.richieoscar.miwok.ui;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.richieoscar.miwok.R;
 
@@ -32,28 +32,29 @@ public class MainActivity extends AppCompatActivity {
         openPhraseTranslation();
     }
 
-    private void openNumberTranslation(){
-        numbers.setOnClickListener(v->{
-        startActivity(new Intent(this, NumberActivity.class));
+    private void openNumberTranslation() {
+        numbers.setOnClickListener(v -> {
+            startActivity(new Intent(this, NumberActivity.class));
 
         });
     }
 
-    private void openFamilyMembersTranslation(){
-        familyMembers.setOnClickListener(v->{
+    private void openFamilyMembersTranslation() {
+        familyMembers.setOnClickListener(v -> {
             startActivity(new Intent(this, FamilyActivity.class));
 
         });
     }
 
-    private void openColorTranslation(){
-        colors.setOnClickListener(v->{
+    private void openColorTranslation() {
+        colors.setOnClickListener(v -> {
             startActivity(new Intent(this, ColorActivity.class));
 
         });
     }
-    private void openPhraseTranslation(){
-        phrases.setOnClickListener(v->{
+
+    private void openPhraseTranslation() {
+        phrases.setOnClickListener(v -> {
             startActivity(new Intent(this, PhraseActivity.class));
 
         });
@@ -70,8 +71,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         int id = item.getItemId();
-        switch (id){
+        switch (id) {
             case R.id.item_about:
+                startActivity(new Intent(this, AboutActivity.class));
                 Toast.makeText(this, "About Miwok", Toast.LENGTH_SHORT).show();
                 break;
 
