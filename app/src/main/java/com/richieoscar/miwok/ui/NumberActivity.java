@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.richieoscar.miwok.R;
 import com.richieoscar.miwok.adapter.WordAdapter;
+import com.richieoscar.miwok.audio.WordAudioManager;
 import com.richieoscar.miwok.data.Datamanager;
 import com.richieoscar.miwok.model.Word;
 
@@ -28,7 +29,6 @@ public class NumberActivity extends AppCompatActivity {
 
     }
 
-
     private void setUpRecyclerView(ArrayList<Word> words) {
         recyclerView = findViewById(R.id.numberRecyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
@@ -44,6 +44,6 @@ public class NumberActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        adapter.releaseMediaPlayer();
+        WordAudioManager.releaseMediaPlayer();
     }
 }

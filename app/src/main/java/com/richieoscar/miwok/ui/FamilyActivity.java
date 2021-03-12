@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.richieoscar.miwok.R;
 import com.richieoscar.miwok.adapter.WordAdapter;
+import com.richieoscar.miwok.audio.WordAudioManager;
 import com.richieoscar.miwok.data.Datamanager;
 import com.richieoscar.miwok.model.Word;
 
@@ -40,6 +41,6 @@ public class FamilyActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        adapter.releaseMediaPlayer();
+        WordAudioManager.releaseMediaPlayer();
     }
 }
