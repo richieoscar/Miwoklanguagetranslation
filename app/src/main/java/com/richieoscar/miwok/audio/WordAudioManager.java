@@ -46,7 +46,6 @@ public final class WordAudioManager {
                     // permanently loose focus
                     releaseMediaPlayer();
                 }
-
             }
         };
 
@@ -56,7 +55,6 @@ public final class WordAudioManager {
         if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
             //we have audio focus, we can play the file
             initializeMediaPlayer(v, word);
-
         }
     }
 

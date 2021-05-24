@@ -9,57 +9,32 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.viewpager.widget.ViewPager;
 
 import com.richieoscar.miwok.R;
+import com.richieoscar.miwok.adapter.WordPagerAdapter;
+import com.richieoscar.miwok.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
     TextView numbers, familyMembers, colors, phrases;
+   private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        numbers = findViewById(R.id.textView_numbers);
-        familyMembers = findViewById(R.id.textView_familiy);
-        colors = findViewById(R.id.textViw_colors);
-        phrases = findViewById(R.id.textView_phrases);
-
-
-        openNumberTranslation();
-        openFamilyMembersTranslation();
-        openColorTranslation();
-        openPhraseTranslation();
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        getSupportActionBar().setElevation(0);
+        setUpViewPager();
     }
 
-    private void openNumberTranslation() {
-        numbers.setOnClickListener(v -> {
-            startActivity(new Intent(this, NumberActivity.class));
-
-        });
+    private void setUpViewPager() {
+        WordPagerAdapter adapter = new WordPagerAdapter(getSupportFragmentManager());
+        binding.viewpager.setAdapter(adapter);
+        ViewPager viewPager = binding.viewpager;
+        binding.tablayout.setupWithViewPager(viewPager);
     }
-
-    private void openFamilyMembersTranslation() {
-        familyMembers.setOnClickListener(v -> {
-            startActivity(new Intent(this, FamilyActivity.class));
-
-        });
-    }
-
-    private void openColorTranslation() {
-        colors.setOnClickListener(v -> {
-            startActivity(new Intent(this, ColorActivity.class));
-
-        });
-    }
-
-    private void openPhraseTranslation() {
-        phrases.setOnClickListener(v -> {
-            startActivity(new Intent(this, PhraseActivity.class));
-
-        });
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -74,9 +49,8 @@ public class MainActivity extends AppCompatActivity {
         switch (id) {
             case R.id.item_about:
                 startActivity(new Intent(this, AboutActivity.class));
-                Toast.makeText(this, "About Miwok", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.miwok_about, Toast.LENGTH_SHORT).show();
                 break;
-
             default:
         }
         return super.onOptionsItemSelected(item);

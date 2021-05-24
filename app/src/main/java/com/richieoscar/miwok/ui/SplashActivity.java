@@ -12,7 +12,7 @@ import com.richieoscar.miwok.R;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private static final int DELAY_MILLIS = 2000;
+    private static final int DELAY_MILLIS = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

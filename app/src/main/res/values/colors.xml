@@ -9,9 +9,9 @@
     <color name="white">#FFFFFFFF</color>
 
 <!--    my theme-->
-    <color name="primaryColor">#0277bd</color>
-    <color name="primaryLightColor">#58a5f0</color>
-    <color name="primaryDarkColor">#004c8c</color>
+    <color name="primaryColor">#308200</color>
+    <color name="primaryLightColor">#64b23b</color>
+    <color name="primaryDarkColor">#005400</color>
     <color name="primaryTextColor">#ffffff</color>
 
 <!--    color for activities-->

@@ -44,8 +44,6 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.NumberViewHold
     public void onBindViewHolder(@NonNull NumberViewHolder holder, int position) {
         holder.bind(words.get(position));
         holder.constraintLayout.setBackgroundColor(colorRes);
-
-
     }
 
     @Override
@@ -59,7 +57,6 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.NumberViewHold
         ImageButton play;
         ConstraintLayout constraintLayout;
 
-
         public NumberViewHolder(@NonNull View itemView) {
             super(itemView);
             englishWord = itemView.findViewById(R.id.textView_english_list);
@@ -68,7 +65,6 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.NumberViewHold
             constraintLayout = itemView.findViewById(R.id.rootLayout);
             play = itemView.findViewById(R.id.imageButton);
             itemView.setOnClickListener(this);
-
         }
 
         void bind(Word word) {
@@ -82,7 +78,6 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.NumberViewHold
                 miwokTranslation.setText(word.getMowikTranslation());
                 image.setVisibility(View.GONE);
             }
-
         }
 
 
