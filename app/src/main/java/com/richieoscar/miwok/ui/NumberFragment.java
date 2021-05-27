@@ -24,23 +24,37 @@ import java.util.ArrayList;
 
 public class NumberFragment extends Fragment {
 
-private FragmentNumberBinding binding;
-private WordAdapter adapter;
+    private FragmentNumberBinding binding;
+    private WordAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-      binding = DataBindingUtil.inflate(inflater ,R.layout.fragment_number, container, false);
-      setUpRecyclerView(Datamanager.getNumbers());
-      return binding.getRoot();
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_number, container, false);
+        setUpRecyclerView(Datamanager.getNumbers());
+
+        playAll();
+        return binding.getRoot();
+    }
+
+    public void playAll() {
+        binding.playAll.setOnClickListener(v ->{
+            WordAudioManager.reset();
+            play();
+        });
+    }
+
+    private void play() {
+        ArrayList<Word> numbers = Datamanager.getNumbers();
+        int count = WordAudioManager.getIndex();
+        WordAudioManager.play(getContext(), numbers, count);
+
     }
 
     private void setUpRecyclerView(ArrayList<Word> words) {
-       RecyclerView recyclerView = binding.numberRecyclerView;
+        RecyclerView recyclerView = binding.numberRecyclerView;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
-        DividerItemDecoration decoration = new DividerItemDecoration(getContext(), linearLayoutManager.getOrientation());
-        recyclerView.addItemDecoration(decoration);
         recyclerView.setLayoutManager(linearLayoutManager);
         int color = ContextCompat.getColor(getContext(), R.color.number_color);
         adapter = new WordAdapter(words, color);

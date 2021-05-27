@@ -33,13 +33,12 @@ public class FamilyFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_family, container, false);
         setUpRecyclerView(Datamanager.getFamilyMembers());
+        playAll();
         return binding.getRoot();
     }
     private void setUpRecyclerView(ArrayList<Word> words) {
         RecyclerView recyclerView = binding.familyRecylerview;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
-        DividerItemDecoration decoration = new DividerItemDecoration(getContext(), linearLayoutManager.getOrientation());
-        recyclerView.addItemDecoration(decoration);
         recyclerView.setLayoutManager(linearLayoutManager);
         int color = ContextCompat.getColor(getContext(), R.color.family_color);
         adapter = new WordAdapter(words, color);
@@ -50,5 +49,19 @@ public class FamilyFragment extends Fragment {
     public void onStop() {
         super.onStop();
         WordAudioManager.releaseMediaPlayer();
+    }
+
+    public void playAll() {
+        binding.playAll.setOnClickListener(v ->{
+            WordAudioManager.reset();
+            play();
+        });
+    }
+
+    private void play() {
+        ArrayList<Word> numbers = Datamanager.getFamilyMembers();
+        int count = WordAudioManager.getIndex();
+        WordAudioManager.play(getContext(), numbers, count);
+
     }
 }

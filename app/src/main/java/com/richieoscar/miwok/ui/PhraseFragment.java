@@ -32,14 +32,13 @@ public class PhraseFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_phrase, container, false);
         setUpRecyclerView(Datamanager.getPhrases());
+        playAll();
         return binding.getRoot();
     }
 
     private void setUpRecyclerView(ArrayList<Word> words) {
         RecyclerView recyclerView = binding.phraseRecyclerview;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
-        DividerItemDecoration decoration = new DividerItemDecoration(getContext(), linearLayoutManager.getOrientation());
-        recyclerView.addItemDecoration(decoration);
         recyclerView.setLayoutManager(linearLayoutManager);
         int color = ContextCompat.getColor(getContext(), R.color.phrase_color);
         adapter = new WordAdapter(words, color);
@@ -50,5 +49,18 @@ public class PhraseFragment extends Fragment {
     public void onStop() {
         super.onStop();
         WordAudioManager.releaseMediaPlayer();
+    }
+
+    public void playAll() {
+        binding.playAll.setOnClickListener(v ->{
+            WordAudioManager.reset();
+            play();
+        });
+    }
+
+    private void play() {
+        ArrayList<Word> numbers = Datamanager.getPhrases();
+        int count = WordAudioManager.getIndex();
+        WordAudioManager.play(getContext(), numbers, count);
     }
 }

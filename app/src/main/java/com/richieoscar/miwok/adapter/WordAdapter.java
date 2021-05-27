@@ -1,9 +1,5 @@
 package com.richieoscar.miwok.adapter;
 
-import android.content.Context;
-import android.media.AudioFocusRequest;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -90,7 +86,7 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.NumberViewHold
             int position = getAdapterPosition();
             Word word = words.get(position);
             WordAudioManager.releaseMediaPlayer();
-            WordAudioManager.setAudioManager(v, word);
+            WordAudioManager.setAudioManager(v.getContext(), word);
         }
     }
 

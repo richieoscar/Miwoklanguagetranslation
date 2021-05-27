@@ -6,6 +6,9 @@
     <data>
 
     </data>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,9 +18,24 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/phrase_recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/playAll"
             tools:layout_editor_absoluteX="109dp"
-            tools:layout_editor_absoluteY="334dp"
             tools:listitem="@layout/list_item" />
+
+        <Button
+            android:id="@+id/playAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#F47272"
+            android:drawableLeft="@drawable/ic_baseline_play_circle_filled_24"
+            android:text="Play All"
+            app:cornerRadius="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

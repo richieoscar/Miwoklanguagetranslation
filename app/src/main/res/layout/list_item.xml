@@ -8,6 +8,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,7 +38,7 @@
                 android:layout_marginBottom="5dp"
                 android:text="TextView"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="#FFFFFF"
+                android:textColor="#858383"
                 app:layout_constraintBottom_toTopOf="@+id/textView_english_list"
                 app:layout_constraintStart_toEndOf="@+id/image_list"
                 app:layout_constraintTop_toTopOf="parent"
@@ -48,7 +51,7 @@
                 android:layout_marginBottom="5dp"
                 android:text="TextView"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="#C3FFFFFF"
+                android:textColor="#C3151212"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView_miwok_list"
@@ -61,6 +64,9 @@
                 android:layout_marginEnd="24dp"
                 android:background="@drawable/ic_baseline_volume_up_24"
 
+                android:backgroundTint="@color/primaryLightColor"
+                android:foregroundTint="@color/primaryLightColor"
+                android:tint="@color/primaryLightColor"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
